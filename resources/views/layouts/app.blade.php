@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css', 'build') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -52,6 +52,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ route('cabinet') }}">Cabinet</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -75,6 +76,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js', 'build') }}"></script>
 </body>
 </html>
