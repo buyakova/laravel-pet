@@ -1,23 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Hello</div>
+    <div class="card">
+        <div class="card-header">Hello</div>
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    Your site
+        <div class="card-body">
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
                 </div>
-            </div>
+            @endif
+
+            Your site
         </div>
     </div>
-</div>
 @endsection
