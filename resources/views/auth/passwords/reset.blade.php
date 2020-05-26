@@ -1,14 +1,5 @@
 @extends('layouts.app')
 
-@section('breadcrumbs')
-    <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('login') }}">Login</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('password.request') }}">Reset</a></li>
-        <li class="breadcrumb-item active">Change</li>
-    </ul>
-@endsection
-
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -17,7 +8,7 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.request') }}">
-                        {{ csrf_field() }}
+                        @csrf
 
                         <input type="hidden" name="token" value="{{ $token }}">
 

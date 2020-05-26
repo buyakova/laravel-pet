@@ -1,12 +1,5 @@
 @extends('layouts.app')
 
-@section('breadcrumbs')
-    <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item active">Login</li>
-    </ul>
-@endsection
-
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -15,7 +8,7 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
+                        @csrf
 
                         <div class="form-group row">
                             <label for="email" class="col-sm-4 col-form-label text-md-right">E-Mail Address</label>

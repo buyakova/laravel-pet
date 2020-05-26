@@ -51,7 +51,7 @@
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
+                                    @csrf
                                 </form>
                             </div>
                         </li>
@@ -64,6 +64,7 @@
 
 <main class="app-content py-3">
     <div class="container">
+        @section('breadcrumbs', Breadcrumbs::render())
         @yield('breadcrumbs')
         @include('layouts.partials.flash')
         @yield('content')
