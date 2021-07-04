@@ -15,5 +15,4 @@
             <button type="submit" class="btn btn-primary">Verify</button>
         </div>
     </form>
-
 @endsection

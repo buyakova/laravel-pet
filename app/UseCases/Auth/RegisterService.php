@@ -2,7 +2,6 @@
 
 namespace App\UseCases\Auth;
 
-
 use App\Entity\User;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Mail\Auth\VerifyMail;

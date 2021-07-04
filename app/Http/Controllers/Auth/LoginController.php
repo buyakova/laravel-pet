@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class LoginController extends Controller
 {
@@ -48,7 +49,6 @@ class LoginController extends Controller
                 Auth::logout();
                 return back()->with('error', 'You need to confirm your account. Please check your email.');
             }
-
             if ($user->isPhoneAuthEnabled()) {
                 Auth::logout();
                 $token = (string)random_int(10000, 99999);
@@ -60,7 +60,6 @@ class LoginController extends Controller
                 $this->sms->send($user->phone, 'Login code: ' . $token);
                 return redirect()->route('login.phone');
             }
-
             return redirect()->intended(route('cabinet.home'));
         }
 

@@ -47,7 +47,7 @@
             <input type="hidden" name="required" value="0">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="required" {{ old('required', $attribute->required) ? 'checked' : '' }}> Required
+                    <input type="checkbox" name="required" {{ old('required', $attribute->required) ? 'checked' : '' }}> Rquired
                 </label>
             </div>
             @if ($errors->has('required'))

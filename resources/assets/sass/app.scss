@@ -1,4 +1,3 @@
-
 // Variables
 @import "variables";
 
@@ -6,6 +5,11 @@
 @import '~bootstrap/scss/bootstrap';
 
 @import "~font-awesome/scss/font-awesome.scss";
+
+.navbar {
+  background-color: #0c64a2;
+  padding: 0.35rem 1rem;
+}
 
 body {
   display: flex;
@@ -17,11 +21,18 @@ body {
   flex: 1;
 }
 
-.navbar {
-  background-color: #0c64a2;
-  padding: 0.35rem 1rem;
-}
-
 .table th, .table td {
   padding: 0.55rem 0.75rem;
+}
+
+.adverts-list {
+  .advert {
+    margin: 20px 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
 }

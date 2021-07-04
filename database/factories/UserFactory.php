@@ -1,9 +1,9 @@
 <?php
 
 use App\Entity\User;
+use Carbon\Carbon;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
-use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +15,8 @@ use Carbon\Carbon;
 | model instances for testing / seeding your application's database.
 |
 */
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 $factory->define(User::class, function (Faker $faker) {
     $active = $faker->boolean;

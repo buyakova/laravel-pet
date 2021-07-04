@@ -5,12 +5,13 @@ namespace App\Console\Commands\User;
 use App\Entity\User;
 use App\UseCases\Auth\RegisterService;
 use Illuminate\Console\Command;
+use Symfony\Component\Console\Input\InputOption;
 
 class VerifyCommand extends Command
 {
     protected $signature = 'user:verify {email}';
 
-    protected $description = 'Command description';
+    protected $description = 'Verify user email';
 
     private $service;
 
@@ -24,6 +25,7 @@ class VerifyCommand extends Command
     {
         $email = $this->argument('email');
 
+        /** @var User $user */
         if (!$user = User::where('email', $email)->first()) {
             $this->error('Undefined user with email ' . $email);
             return false;
@@ -36,7 +38,7 @@ class VerifyCommand extends Command
             return false;
         }
 
-        $this->info('Success! ' . $this->argument('email'));
+        $this->info('User is successfully verified');
         return true;
     }
 }

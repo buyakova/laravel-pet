@@ -71,9 +71,9 @@ class AttributeController extends Controller
         return redirect()->route('admin.adverts.categories.show', $category);
     }
 
-    public function destroy(Category $category, Attribute $attribute)
+    public function destroy(Category $category)
     {
-        $attribute->delete();
+        $category->delete();
 
         return redirect()->route('admin.adverts.categories.show', $category);
     }

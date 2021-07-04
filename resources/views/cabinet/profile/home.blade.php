@@ -48,4 +48,4 @@
         @endif
         </tbody>
     </table>
-@endsection 
+@endsection

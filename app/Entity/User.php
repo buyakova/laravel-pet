@@ -33,20 +33,10 @@ class User extends Authenticatable
     public const ROLE_MODERATOR = 'moderator';
     public const ROLE_ADMIN = 'admin';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'name', 'last_name', 'email', 'phone', 'password', 'status', 'verify_token', 'role'
+        'name', 'last_name', 'email', 'phone', 'password', 'verify_token', 'status', 'role',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
@@ -122,41 +112,11 @@ class User extends Authenticatable
         $this->update(['role' => $role]);
     }
 
-    public function isModerator(): bool
-    {
-        return $this->role === self::ROLE_MODERATOR;
-    }
-
-    public function isAdmin(): bool
-    {
-        return $this->role === self::ROLE_ADMIN;
-    }
-
-    public function isPhoneVerified(): bool
-    {
-        return $this->phone_verified;
-    }
-
     public function unverifyPhone(): void
     {
         $this->phone_verified = false;
         $this->phone_verify_token = null;
         $this->phone_verify_token_expire = null;
-        $this->phone_auth = false;
-        $this->saveOrFail();
-    }
-
-    public function enablePhoneAuth(): void
-    {
-        if (!empty($this->phone) && !$this->isPhoneVerified()) {
-            throw new \DomainException('Phone number is empty.');
-        }
-        $this->phone_auth = true;
-        $this->saveOrFail();
-    }
-
-    public function disablePhoneAuth(): void
-    {
         $this->phone_auth = false;
         $this->saveOrFail();
     }
@@ -189,6 +149,36 @@ class User extends Authenticatable
         $this->phone_verify_token = null;
         $this->phone_verify_token_expire = null;
         $this->saveOrFail();
+    }
+
+    public function enablePhoneAuth(): void
+    {
+        if (!empty($this->phone) && !$this->isPhoneVerified()) {
+            throw new \DomainException('Phone number is empty.');
+        }
+        $this->phone_auth = true;
+        $this->saveOrFail();
+    }
+
+    public function disablePhoneAuth(): void
+    {
+        $this->phone_auth = false;
+        $this->saveOrFail();
+    }
+
+    public function isModerator(): bool
+    {
+        return $this->role === self::ROLE_MODERATOR;
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === self::ROLE_ADMIN;
+    }
+
+    public function isPhoneVerified(): bool
+    {
+        return $this->phone_verified;
     }
 
     public function isPhoneAuthEnabled(): bool

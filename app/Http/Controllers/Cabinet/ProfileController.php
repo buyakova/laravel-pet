@@ -31,6 +31,7 @@ class ProfileController extends Controller
         ]);
 
         $user = Auth::user();
+
         $oldPhone = $user->phone;
 
         $user->update($request->only('name', 'last_name', 'phone'));
